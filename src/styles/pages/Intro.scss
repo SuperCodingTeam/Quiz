@@ -1,0 +1,17 @@
+.hero-body {
+  .title {
+    font-size: 1.3em;
+    margin-bottom: 1vh !important;
+  }
+  .subtitle {
+    font-size: 0.8em;
+  }
+}
+
+.section {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
