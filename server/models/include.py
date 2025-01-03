@@ -37,14 +37,6 @@ class Include(Base):
         self.quiz_uuid = quiz_uuid
 
     @staticmethod
-    def read_all_quiz_from_room(dbo: DBObject, room_uuid: str) -> List[Dict[str, Any]]:
-        with dbo.session as session:
-            include = session.query(Include).filter(
-                Include.room_uuid == room_uuid).all()
-
-        return [q.get_properties() for q in include]
-
-    @staticmethod
     def create_include_model(dbo: DBObject, room_uuid: str, quiz_uuid: str) -> "Include":
         include = Include(room_uuid, quiz_uuid)
         with dbo.session as session:

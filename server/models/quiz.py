@@ -63,5 +63,10 @@ class Quiz(Base):
 
         return quiz
 
-    def read_quiz_model(self) -> Dict[str, Any]:
-        return self.get_properties()
+    @staticmethod
+    def get_quiz_by_room_uuid(dbo: DBObject, room_uuid: str):
+        with dbo.session as session:
+            quiz = session.query(Quiz).join(Include).filter(
+                Include.room_uuid == room_uuid).all()
+
+        return [q.get_properties() for q in quiz]

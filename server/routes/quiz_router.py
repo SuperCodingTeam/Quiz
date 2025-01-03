@@ -12,7 +12,7 @@ quiz_router = APIRouter(
 @quiz_router.get("/{room_uuid}")
 async def get_quiz(room_uuid: str):
     try:
-        quiz = Include.read_all_quiz_from_room(DBObject(), room_uuid)
+        quiz = Quiz.get_quiz_by_room_uuid(DBObject(), room_uuid)
         return quiz
     except Exception as e:
         print(e)

@@ -42,7 +42,15 @@ class Score(Base):
         self.score = score
         self.score_uuid = score_uuid if score_uuid else str(uuid.uuid4())
 
-    @staticmethod
+    def get_properties(self) -> Dict[str, Any]:
+        return {
+            "quiz_uuid": self.quiz_uuid,
+            "name": self.name,
+            "score": self.score,
+            "score_uuid": self.score_uuid
+        }
+
+    @ staticmethod
     def create_score_model(
         dbo: DBObject,
         quiz_uuid: str,
@@ -57,10 +65,8 @@ class Score(Base):
 
         return score
 
-    def read_score_model(self) -> Dict[str, Any]:
-        return {
-            "score_uuid": self.score_uuid,
-            "name": self.name,
-            "score": self.score,
-            "quiz_uuid": self.quiz_uuid,
-        }
+    @ staticmethod
+    def read_score_by_name(dbo: DBObject, name: str) -> "Score":
+        with dbo.session as session:
+            score = session.query(Score).filter(Score.name == name).first()
+            return score
