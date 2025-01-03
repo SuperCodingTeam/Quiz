@@ -5,3 +5,13 @@ body {
   font-size: 2em;
   font-family: "Roboto", sans-serif;
 }
+
+.hero-body {
+  .title {
+    font-size: 1.3em;
+    margin-bottom: 1vh !important;
+  }
+  .subtitle {
+    font-size: 0.8em;
+  }
+}
