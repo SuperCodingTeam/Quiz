@@ -1,0 +1,22 @@
+.quiz-container {
+  width: 60vw;
+  border: 1px solid black;
+  display: flex;
+  height: 15vh;
+
+  .quiz-number {
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10vw;
+  }
+
+  .quiz-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+  }
+}
