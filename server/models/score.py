@@ -66,7 +66,7 @@ class Score(Base):
         return score
 
     @ staticmethod
-    def read_score_by_name(dbo: DBObject, name: str) -> "Score":
+    def read_score_by_name(dbo: DBObject, name: str):
         with dbo.session as session:
-            score = session.query(Score).filter(Score.name == name).first()
-            return score
+            score = session.query(Score).filter(Score.name == name).all()
+            return [q.get_properties() for q in score]

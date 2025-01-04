@@ -12,8 +12,9 @@ score_router = APIRouter(
 async def get_score(name: str):
     try:
         score = Score.read_score_by_name(DBObject(), name)
-        return score.get_properties()
-    except:
+        return score
+    except Exception as e:
+        print(e)
         return {"message": "Score not found"}
 
 
